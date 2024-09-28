@@ -82,7 +82,8 @@ namespace Jalgpalli_mäng
             //Если игрок не является ближайшим к мячу, он останавливается
             if (Team.GetClosestPlayerToBall() != this)
             {
-                _vx = 0; //tema kiirus on 0 (его скорость равняется 0)
+                //tema kiirus on 0 (его скорость равняется 0)
+                _vx = 0; 
                 _vy = 0;
             }
 
