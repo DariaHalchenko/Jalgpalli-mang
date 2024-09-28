@@ -20,10 +20,10 @@ namespace Jalgpalli_mäng
             int middleY = _game.Stadium.Height / 2;
 
             // Ворота домашней команды
-            Draw(0, middleY - goalHeight / 2, ConsoleColor.Blue);
+            Draw(0, middleY - goalHeight / 2, ConsoleColor.Yellow);
 
             // Ворота гостевой команды
-            Draw(_game.Stadium.Width - goalWidth, middleY - goalHeight / 2, ConsoleColor.Red);
+            Draw(_game.Stadium.Width - goalWidth, middleY - goalHeight / 2, ConsoleColor.Magenta);
         }
         // Метод для отрисовки ворот
         public void Draw(int x, int y, ConsoleColor color)

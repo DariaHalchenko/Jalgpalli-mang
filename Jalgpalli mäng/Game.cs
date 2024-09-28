@@ -30,7 +30,7 @@ namespace Jalgpalli_mäng
             //Palli loomine ja asetamine väljaku keskele (Создание мяча и помещение его в центр поля)
             Ball = new Ball(Stadium.Width / 2, Stadium.Height / 2, this);
             //kodumeeskonna stardipositsioon (начальная позиция для домашней команды)
-            HomeTeam.StartGame(Stadium.Width / 2, Stadium.Height);
+            HomeTeam.StartGame(Stadium.Width / 1, Stadium.Height);
             //stardipositsioon võõrsil (начальная позиция для гостевой команды)
             AwayTeam.StartGame(Stadium.Width / 2, Stadium.Height);
         }

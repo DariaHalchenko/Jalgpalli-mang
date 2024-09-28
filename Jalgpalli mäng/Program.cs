@@ -16,19 +16,19 @@ namespace Jalgpalli_mäng
             var stadiumHeight = 30; // Высота стадиона
 
             var stadium = new Stadium(stadiumWidth, stadiumHeight);
-            var Meeskond_1 = new Team("Punane");
-            var Meeskond_2 = new Team("Sinine");
+            var Meeskond_1 = new Team("Kollane");
+            var Meeskond_2 = new Team("Lilla");
             
-            // Создание игроков для красной команды
+            // Создание игроков для желтой команды
             for (int i = 1; i <= 11; i++)
             {
-                Meeskond_1.AddPlayer(new Player($"PunanePlayer{i}", ConsoleColor.Red, 'P'));
+                Meeskond_1.AddPlayer(new Player($"PunanePlayer{i}", ConsoleColor.Yellow, 'P'));
             }
 
-            // Создание игроков для синей команды
+            // Создание игроков для пурпурной команды
             for (int i = 1; i <= 11; i++)
             {
-                Meeskond_1.AddPlayer(new Player($"PunanePlayer{i}", ConsoleColor.Blue, 'S'));
+                Meeskond_1.AddPlayer(new Player($"PunanePlayer{i}", ConsoleColor.Magenta, 'S'));
             }
 
             var game = new Game(Meeskond_1, Meeskond_2, stadium);
@@ -37,10 +37,12 @@ namespace Jalgpalli_mäng
             var stadium_Drawing = new Staadioni_joonis(game);
             var goal_Drawing = new Värava_joonistamine(game);
             var player_Drawing = new Joonistus_mängijad(game);
+            var palli_Drawing = new Palli_joonistamine(game);
 
             stadium_Drawing.Draw();
             goal_Drawing.DrawGoals();
             player_Drawing.Draw();
+            palli_Drawing.Draw();
             
             while (true)
             {
