@@ -30,5 +30,21 @@ namespace Jalgpalli_mäng
             leftLine.Draw();
             rightLine.Draw();
         }
+        public void DrawPlayers()
+        {
+            foreach (var player in _game.HomeTeam.Players)
+            {
+                Console.ForegroundColor = player.Color; //цвет игрока
+                Console.SetCursorPosition((int)player.X, (int)player.Y); //позицию игрока
+                Console.Write(player.Symbol); //символ игрока
+            }
+
+            foreach (var player in _game.AwayTeam.Players)
+            {
+                Console.ForegroundColor = player.Color; //цвет игрока
+                Console.SetCursorPosition((int)player.X, (int)player.Y); //позицию игрока
+                Console.Write(player.Symbol); //символ игрока
+            }
+        }
     } 
 }

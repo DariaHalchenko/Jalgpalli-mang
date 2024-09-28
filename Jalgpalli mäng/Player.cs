@@ -12,9 +12,9 @@ namespace Jalgpalli_mäng
         public string Name { get; } //Mängija nimi (Имя игрока)
         public double X { get; private set; } //Koordinaadid (Координаты)
         public double Y { get; private set; } //Koordinaadid (Координаты)
-
-        //Mängija samm (Шаг игрока)
-        private double _vx, _vy;
+        public ConsoleColor Color { get; } //цвет игроков
+        public char Symbol { get; } // Символ игрока
+        private double _vx, _vy; //Mängija samm (Шаг игрока)
        
         public Team? Team { get; set; } = null; //Meeskond (Команда)
 
@@ -25,9 +25,11 @@ namespace Jalgpalli_mäng
         private Random _random = new Random();
 
         //Võtab vastu ainult mängija nime (Принимает только имя игрока)
-        public Player(string name)
+        public Player(string name, ConsoleColor color, char symbol)
         {
             Name = name;
+            Color = color;
+            Symbol = symbol;
         }
 
         //Võtab vastu mängija nime, koordinaadid, meeskonnad (Принимает имя игрока, координаты, команд)

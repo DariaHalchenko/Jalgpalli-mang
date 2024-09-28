@@ -11,19 +11,35 @@ namespace Jalgpalli_mäng
         static void Main(string[] args)
         {
             Console.Clear();
-            
-
-            var stadiumWidth = 70; // Ширина стадиона
-            var stadiumHeight = 20; // Высота стадиона
+            //размеры ворот
+            var stadiumWidth = 90; // Ширина стадиона
+            var stadiumHeight = 30; // Высота стадиона
 
             var stadium = new Stadium(stadiumWidth, stadiumHeight);
-            var game = new Game(new Team("Meeskond1"), new Team("Meeskond2"), stadium);
+            var Meeskond_1 = new Team("Punane");
+            var Meeskond_2 = new Team("Sinine");
+            
+            // Создание игроков для красной команды
+            for (int i = 1; i <= 11; i++)
+            {
+                Meeskond_1.AddPlayer(new Player($"PunanePlayer{i}", ConsoleColor.Red, 'P'));
+            }
 
-            var stadiumDrawing = new Staadioni_joonis(game);
-            var goalDrawing = new Värava_joonistamine(game);
+            // Создание игроков для синей команды
+            for (int i = 1; i <= 11; i++)
+            {
+                Meeskond_1.AddPlayer(new Player($"PunanePlayer{i}", ConsoleColor.Blue, 'S'));
+            }
 
-            stadiumDrawing.Draw();
-            goalDrawing.DrawGoals();
+            var game = new Game(Meeskond_1, Meeskond_2, stadium);
+            game.Start();
+            
+            var stadium_Drawing = new Staadioni_joonis(game);
+            var goal_Drawing = new Värava_joonistamine(game);
+
+            stadium_Drawing.Draw();
+            goal_Drawing.DrawGoals();
+            stadium_Drawing.DrawPlayers();
 
             Thread.Sleep(50000);
         }
