@@ -74,8 +74,7 @@ namespace Jalgpalli_mäng
 
             return closestPlayer;
         }
-        //Mängu ajal mängijate liigutamise meetod
-        //(Метод перемещения игроков во время игры)
+        //Mängu ajal mängijate liigutamise meetod (Метод перемещения игроков во время игры)
         public void Move()
         {
             //Lähima mängija liigutamine palli juurde (Перемещение ближайшего игрока к мячу)

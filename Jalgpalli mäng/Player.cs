@@ -13,7 +13,7 @@ namespace Jalgpalli_mäng
         public double X { get; private set; } //Koordinaadid (Координаты)
         public double Y { get; private set; } //Koordinaadid (Координаты)
 
-        //Шаг игрока
+        //Mängija samm (Шаг игрока)
         private double _vx, _vy;
        
         public Team? Team { get; set; } = null; //Meeskond (Команда)
@@ -39,20 +39,20 @@ namespace Jalgpalli_mäng
             Team = team;
         }
 
-        //Установка позиции игрока на поле 
+        //Mängija positsiooni määramine väljakul (Установка позиции игрока на поле)
         public void SetPosition(double x, double y)
         {
             X = x;
             Y = y;
         }
-
+        //Mängija positsiooni määramine väljakul, kui võistkond väljakule ilmub
         //Установка позиции игрока на поле, когда на поле появилась команда
         public (double, double) GetAbsolutePosition()
         {
             return Team!.Game.GetPositionForTeam(Team, X, Y);
         }
 
-        //растояние до мяча
+        //kaugus pallini (расстояние до мяча)
         public double GetDistanceToBall()
         {
             var ballPosition = Team!.GetBallPosition();
@@ -61,7 +61,7 @@ namespace Jalgpalli_mäng
             return Math.Sqrt(dx * dx + dy * dy);
         }
 
-        //Движение игрока к мячу
+        //Mängija liikumine palli suunas (Движение игрока к мячу)
         public void MoveTowardsBall()
         {
             var ballPosition = Team!.GetBallPosition();
@@ -75,7 +75,7 @@ namespace Jalgpalli_mäng
             _vy = dy / ratio;
         }
 
-        //перемещение игрока на поле 
+        //mängija väljakule viimine (перемещение игрока на поле)
         public void Move()
         {
             //Kui mängija ei ole pallile lähim, jääb ta seisma
