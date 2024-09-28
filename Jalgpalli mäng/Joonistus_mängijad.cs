@@ -10,7 +10,6 @@ namespace Jalgpalli_mäng
     public class Joonistus_mängijad
     {
         private Game _game;
-
         public Joonistus_mängijad(Game game)
         {
             _game = game;

@@ -22,13 +22,13 @@ namespace Jalgpalli_mäng
             // Создание игроков для желтой команды
             for (int i = 1; i <= 11; i++)
             {
-                Meeskond_1.AddPlayer(new Player($"PunanePlayer{i}", ConsoleColor.Yellow, 'P'));
+                Meeskond_1.AddPlayer(new Player($"PunanePlayer{i}", ConsoleColor.Yellow, 'K'));
             }
 
             // Создание игроков для пурпурной команды
             for (int i = 1; i <= 11; i++)
             {
-                Meeskond_1.AddPlayer(new Player($"PunanePlayer{i}", ConsoleColor.Magenta, 'S'));
+                Meeskond_1.AddPlayer(new Player($"PunanePlayer{i}", ConsoleColor.Magenta, 'L'));
             }
 
             var game = new Game(Meeskond_1, Meeskond_2, stadium);
