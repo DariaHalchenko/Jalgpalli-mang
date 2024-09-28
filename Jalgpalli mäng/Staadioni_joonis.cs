@@ -18,15 +18,17 @@ namespace Jalgpalli_mäng
         // Метод для отрисовки всего игрового поля
         public void Draw()
         {
-            HorizontalLine upLine = new HorizontalLine(0, _game.Stadium.Width - 1, 0, '_');
+            Console.ForegroundColor = ConsoleColor.Green;
+
+            HorizontalLine upLine = new HorizontalLine(0, _game.Stadium.Width - 1, 0, '-');
             HorizontalLine downLine = new HorizontalLine(0, _game.Stadium.Width - 1, _game.Stadium.Height - 1, '_');
             VerticalLine leftLine = new VerticalLine(0, _game.Stadium.Height - 1, 0, '|');
-            VerticalLine rightLine = new VerticalLine(0, _game.Stadium.Width - 1, _game.Stadium.Height - 1, '|');
+            VerticalLine rightLine = new VerticalLine(0, _game.Stadium.Height - 1, _game.Stadium.Width - 1, '|');
 
-            leftLine.Draw();
-            rightLine.Draw();
             upLine.Draw();
             downLine.Draw();
+            leftLine.Draw();
+            rightLine.Draw();
         }
     } 
 }
