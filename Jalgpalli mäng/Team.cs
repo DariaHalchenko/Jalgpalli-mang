@@ -34,6 +34,7 @@ namespace Jalgpalli_mäng
                     rnd.NextDouble() * height
                     );
             }
+            
         }
         //mängija lisamine meeskonda, kui mängija kuulub juba meeskonnale, siis ei saa lisada
         //добавления игрока в команду, если игрок уже принадлежит команде, то нельзя добавлять

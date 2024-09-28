@@ -33,15 +33,19 @@ namespace Jalgpalli_mäng
 
             var game = new Game(Meeskond_1, Meeskond_2, stadium);
             game.Start();
-            
+
             var stadium_Drawing = new Staadioni_joonis(game);
             var goal_Drawing = new Värava_joonistamine(game);
+            var player_Drawing = new Joonistus_mängijad(game);
 
             stadium_Drawing.Draw();
             goal_Drawing.DrawGoals();
-            stadium_Drawing.DrawPlayers();
-
-            Thread.Sleep(50000);
+            player_Drawing.Draw();
+            
+            while (true)
+            {
+                System.Threading.Thread.Sleep(100);
+            }   
         }
     }
 }
