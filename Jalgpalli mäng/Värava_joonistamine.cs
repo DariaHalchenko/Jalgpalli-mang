@@ -33,6 +33,7 @@ namespace Jalgpalli_mäng
             // Горизонтальные линии ворот
             HorizontalLine upGoal = new HorizontalLine (x + 1, x + goalWidth - 2, y, '-');
             HorizontalLine downGoal = new HorizontalLine (x + 1, x + goalWidth - 2, y + goalHeight - 1, '-');
+            // Вертикальные линии ворот
             VerticalLine lefttGoal = new VerticalLine (y + 1, y + goalHeight - 1, x, '+');
             VerticalLine rightGoal = new VerticalLine(y + 1, y + goalHeight - 1, x + goalWidth - 1, '+');
     

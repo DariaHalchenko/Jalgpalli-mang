@@ -17,7 +17,7 @@ namespace Jalgpalli_mäng
         {
             Console.SetCursorPosition((int)_game.Ball.X, (int)_game.Ball.Y);
             Console.ForegroundColor = ConsoleColor.Red; // цвет мяча
-            Console.Write('O');
+            Console.Write('O'); //символ мяча
         }
     } 
 }
