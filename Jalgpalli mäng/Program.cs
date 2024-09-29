@@ -33,16 +33,9 @@ namespace Jalgpalli_mäng
 
             var game = new Game(Meeskond_1, Meeskond_2, stadium);
             game.Start();
-
-            var stadium_Drawing = new Staadioni_joonis(game);
-            var goal_Drawing = new Värava_joonistamine(game);
-            var player_Drawing = new Joonistus_mängijad(game);
-            var palli_Drawing = new Palli_joonistamine(game);
-
-            stadium_Drawing.Draw();
-            goal_Drawing.DrawGoals();
-            player_Drawing.Draw();
-            palli_Drawing.Draw();
+            
+            var mängija_liikumine = new Mängija_liikumine(game);
+            mängija_liikumine.Start_Game();
             
             while (true)
             {

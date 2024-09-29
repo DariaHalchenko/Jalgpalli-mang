@@ -18,16 +18,16 @@ namespace Jalgpalli_mäng
         {
             foreach (var player in _game.HomeTeam.Players)
             {
-                Console.ForegroundColor = ConsoleColor.Yellow; //цвет игрока
+                Console.ForegroundColor = ConsoleColor.Magenta; //цвет игрока
                 Console.SetCursorPosition((int)player.X, (int)player.Y); //позицию игрока
-                Console.Write('Y'); //символ игрока
+                Console.Write('M'); //символ игрока
             }
 
             foreach (var player in _game.AwayTeam.Players)
             {
-                Console.ForegroundColor = ConsoleColor.Magenta; //цвет игрока
+                Console.ForegroundColor = ConsoleColor.Yellow; //цвет игрока
                 Console.SetCursorPosition((int)player.X, (int)player.Y); //позицию игрока
-                Console.Write('M'); //символ игрока
+                Console.Write('Y'); //символ игрока
             }
         }
     }
