@@ -34,12 +34,26 @@ namespace Jalgpalli_mäng
             var game = new Game(Meeskond_1, Meeskond_2, stadium);
             game.Start();
             
-            var mängija_liikumine = new Mängija_liikumine(game);
-            mängija_liikumine.Start_Game();
             
             while (true)
             {
-                System.Threading.Thread.Sleep(100);
+                game.Move();
+                Console.Clear();
+                
+                Meeskond_1.Move();
+                Meeskond_2.Move();
+
+                var stadiumDrawing = new Staadioni_joonis(game);
+                var goalDrawing = new Värava_joonistamine(game);
+                var playerDrawing = new Joonistus_mängijad(game);
+                var ballDrawing = new Palli_joonistamine(game);
+
+                stadiumDrawing.Draw();
+                goalDrawing.DrawGoals();
+                playerDrawing.Draw();
+                ballDrawing.Draw();
+
+                Thread.Sleep(300);
             }   
         }
     }
