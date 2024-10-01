@@ -14,6 +14,15 @@ namespace Jalgpalli_mäng
         {
             _game = game;
         }
+        public void Clear()
+
+        {
+            foreach (var player in _game.HomeTeam.Players.Concat(_game.AwayTeam.Players))
+            {   
+                Console.SetCursorPosition((int)player.X, (int)player.Y); 
+                Console.Write(' '); 
+            }
+        }
         public void Draw()
         {
             foreach (var player in _game.HomeTeam.Players)

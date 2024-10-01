@@ -22,31 +22,28 @@ namespace Jalgpalli_mäng
             // Создание игроков для желтой команды
             for (int i = 1; i <= 11; i++)
             {
-                Meeskond_1.AddPlayer(new Player($"KollanePlayer{i}"));
+                Meeskond_1.AddPlayer(new Player($"KollanePlayer {i}"));
             }
 
             // Создание игроков для пурпурной команды
             for (int i = 1; i <= 11; i++)
             {
-                Meeskond_2.AddPlayer(new Player($"LillaPlayer{i}"));
+                Meeskond_2.AddPlayer(new Player($"LillaPlayer {i}"));
             }
 
             var game = new Game(Meeskond_1, Meeskond_2, stadium);
             game.Start();
-            
-            
+
+            var stadiumDrawing = new Staadioni_joonis(game);
+            var goalDrawing = new Värava_joonistamine(game);
+            var playerDrawing = new Joonistus_mängijad(game);
+            var ballDrawing = new Palli_joonistamine(game);
+
             while (true)
             {
+                playerDrawing.Clear();
+                ballDrawing.Clear();
                 game.Move();
-                Console.Clear();
-                
-                Meeskond_1.Move();
-                Meeskond_2.Move();
-
-                var stadiumDrawing = new Staadioni_joonis(game);
-                var goalDrawing = new Värava_joonistamine(game);
-                var playerDrawing = new Joonistus_mängijad(game);
-                var ballDrawing = new Palli_joonistamine(game);
 
                 stadiumDrawing.Draw();
                 goalDrawing.DrawGoals();

@@ -26,7 +26,7 @@ namespace Jalgpalli_mäng
         {
             //Tagastab true, kui koordinaadid on staadioni piires 
             //Возвращает true, если координаты находятся в пределах стадиона 
-            return x >= 0 && x < Width && y >= 0 && y < Height;
+            return x >= 1 && x < Width+1 && y > 1 && y < Height;
         }
     }
 }

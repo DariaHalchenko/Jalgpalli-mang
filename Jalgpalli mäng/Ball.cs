@@ -37,20 +37,20 @@ namespace Jalgpalli_mäng
             double newY = Y + _vy;
             //Kontrollige, kas palli uus asukoht on staadionil
             //Проверка, находится ли новая позиция мяча в пределах стадиона
-            if (_game.Stadium.IsIn(newX, newY))
+            if (newX < 1 || newX >= _game.Stadium.Width + 1)
             {
-                //Kui pall on piirides, värskendab selle koordinaate
-                //Если мяч находится в пределах, обновляет его координаты
-                X = newX;
-                Y = newY;
+                _vx = -_vx; // изменить направление скорости по Х
+                newX = X + _vx;
             }
-            else
+
+            if (newY < 1 || newY >= _game.Stadium.Height + 1)
             {
-                //Kui pall läheb mänguväljast välja, muutub palli kiirus 0 ja peatab selle liikumise
-                //Если мяч выходит за пределы поля, скорость мяча становится 0 и останавливает его движение
-                _vx = 0;
-                _vy = 0;
+                _vy = -_vy; // изменить направление скорости по Y
+                newY = Y + _vy;
             }
+
+            X = newX;
+            Y = newY;
         }
     }
 }

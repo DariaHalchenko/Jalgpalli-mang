@@ -40,22 +40,26 @@ namespace Jalgpalli_mäng
         //добавления игрока в команду, если игрок уже принадлежит команде, то нельзя добавлять
         public void AddPlayer(Player player)
         {
-            //Kontrollib, kas mängijal on meeskond (Проверяет, есть ли у игрока команда)
             if (player.Team != null) return;
-            //Lisab mängija meeskonda (Добавиляет игрока в команду)
             Players.Add(player);
             player.Team = this;
         }
+
         //palli asendi määramine meeskonnale (определения положения мяча для команды)
+
         public (double, double) GetBallPosition()
         {
-            return Game.GetBallPositionForTeam(this);
+            return Game.GetBallPosition();
         }
+
+
         //mängumeetod palli kiiruse määramiseks  (метод игры для определения скорости  мяча)
         public void SetBallSpeed(double vx, double vy)
         {
             Game.SetBallSpeedForTeam(this, vx, vy);
         }
+
+
         //Meetod pallile kõige lähemal oleva mängija leidmiseks
         //Метод поиска игрока, который находится ближе всего к мячу
         public Player GetClosestPlayerToBall()
@@ -75,12 +79,14 @@ namespace Jalgpalli_mäng
 
             return closestPlayer;
         }
+
+
         //Mängu ajal mängijate liigutamise meetod (Метод перемещения игроков во время игры)
-        public void Move()
-        {
-            //Lähima mängija liigutamine palli juurde (Перемещение ближайшего игрока к мячу)
-            GetClosestPlayerToBall().MoveTowardsBall();
-            Players.ForEach(player => player.Move());
-        }
+        //public void Move()
+        //{
+        //    //Lähima mängija liigutamine palli juurde (Перемещение ближайшего игрока к мячу)
+        //    GetClosestPlayerToBall().MoveTowardsBall();
+        //    Players.ForEach(player => player.Move());
+        //}
     }
 }

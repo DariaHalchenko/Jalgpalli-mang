@@ -43,12 +43,6 @@ namespace Jalgpalli_mäng
             X = x;
             Y = y;
         }
-        //Mängija positsiooni määramine väljakul, kui võistkond väljakule ilmub
-        //Установка позиции игрока на поле, когда на поле появилась команда
-        public (double, double) GetAbsolutePosition()
-        {
-            return Team!.Game.GetPositionForTeam(Team, X, Y);
-        }
 
         //kaugus pallini (расстояние до мяча)
         public double GetDistanceToBall()
@@ -73,21 +67,20 @@ namespace Jalgpalli_mäng
             _vy = dy / ratio;
         }
 
+        public void Clear() // очистить игрока
+        {
+            Console.SetCursorPosition((int)X, (int)Y);
+            Console.Write(' ');
+        }
+
         //mängija väljakule viimine (перемещение игрока на поле)
         public void Move()
         {
-            //Kui mängija ei ole pallile lähim, jääb ta seisma
-            //Если игрок не является ближайшим к мячу, он останавливается
-            if (Team.GetClosestPlayerToBall() != this)
-            {
-                //tema kiirus on 0 (его скорость равняется 0)
-                _vx = 0; 
-                _vy = 0;
-            }
-
+            Clear();
             //Kui mängija on palli lähedal, annab ta löögi (Если игрок находится близко к мячу, он наносит удар)
             if (GetDistanceToBall() < BallKickDistance)
             {
+                MoveTowardsBall();
                 //juhuslik kiirus palli tabamiseks (случайная скорость для удара по мячу)
                 Team.SetBallSpeed(
                     MaxKickSpeed * _random.NextDouble(),
@@ -98,9 +91,9 @@ namespace Jalgpalli_mäng
             //mängija uus positsioon (новое положение игрока)
             var newX = X + _vx;
             var newY = Y + _vy;
-            var newAbsolutePosition = Team.Game.GetPositionForTeam(Team, newX, newY);
+            var newAbsolutePosition = Team.Game.GetBallPosition();
             //Kontrolli, kas mängija jääb staadioni piiridesse (Проверка, находится ли игрок  в пределах стадиона)
-            if (Team.Game.Stadium.IsIn(newAbsolutePosition.Item1, newAbsolutePosition.Item2))
+            if (Team.Game.Stadium.IsIn(newX, newY))
             {
                 //uuendame mängija koordinaate (обновляем координаты игрока)
                 X = newX;

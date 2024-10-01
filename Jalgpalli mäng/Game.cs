@@ -35,24 +35,10 @@ namespace Jalgpalli_mäng
             AwayTeam.StartGame(Stadium.Width / 2, Stadium.Height);
         }
 
-        //arvutab külalis meeskonnale peegel koordinaadid (вычисляет зеркальные координаты для гостевой команды)
-        private (double, double) GetPositionForAwayTeam(double x, double y)
-        {
-            //Koordinaatide tagastamine välja laiuse ja kõrguse alusel (Возвращаем координаты по ширине и высоте поля)
-            return (Stadium.Width - x, Stadium.Height - y);
-        }
-
-        //tagastab meeskonnale õiged koordinaadid selle põhjal, kas see on kodus või võõrsil
-        //возвращает правильные координаты для команды, исходя из того, домашняя она или гостевая
-        public (double, double) GetPositionForTeam(Team team, double x, double y)
-        {
-            return team == HomeTeam ? (x, y) : GetPositionForAwayTeam(x, y);
-        }
-
         //tagastab pallipositsiooni konkreetse meeskonna jaoks (возвращает позицию мяча для конкретной команды)
-        public (double, double) GetBallPositionForTeam(Team team)
+        public (double, double) GetBallPosition()
         {
-            return GetPositionForTeam(team, Ball.X, Ball.Y);
+            return (Ball.X, Ball.Y);
         }
 
         //määrab meeskonna palli kiiruse (задает скорость мяча для команды)
@@ -62,21 +48,35 @@ namespace Jalgpalli_mäng
             //если это домашняя команда, устанавливаем скорость мяча как она есть 
             if (team == HomeTeam)
             {
-                Ball.SetSpeed(vx, vy);
+                Ball.SetSpeed(-vx, vy);
             }
             //Kui meeskond on külas, pöörame kiiruse ümber (kuna nende väli on peegeldatud)
             //Если команда гостевая, инвертируем скорость (так как их поле зеркально)
             else
             {
-                Ball.SetSpeed(-vx, -vy);
+                Ball.SetSpeed(vx, vy);
             }
         }
 
         //uuendab mängijate ja palli asukohti väljakul (обновляет позиции игроков и мяча на поле)
         public void Move()
         {
-            HomeTeam.Move();
-            AwayTeam.Move();
+            var closestHomePlayer = HomeTeam.GetClosestPlayerToBall();
+            var closestAwayPlayer = AwayTeam.GetClosestPlayerToBall();
+
+            // Выбираем игрока, который ближе к мячу
+            Player closestPlayer;
+            if (closestHomePlayer.GetDistanceToBall() < closestAwayPlayer.GetDistanceToBall())
+            {
+                closestPlayer = closestHomePlayer;
+            }
+            else
+            {
+                closestPlayer = closestAwayPlayer;
+            }
+
+            closestPlayer.Move();
+
             Ball.Move();
         }
     }

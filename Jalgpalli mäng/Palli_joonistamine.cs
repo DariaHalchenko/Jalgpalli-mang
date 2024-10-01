@@ -13,6 +13,11 @@ namespace Jalgpalli_mäng
         {
             _game = game;
         }
+        public void Clear()
+        {
+            Console.SetCursorPosition((int)_game.Ball.X, (int)_game.Ball.Y);
+            Console.Write(' ');
+        }
         public void Draw()
         {
             Console.SetCursorPosition((int)_game.Ball.X, (int)_game.Ball.Y);
