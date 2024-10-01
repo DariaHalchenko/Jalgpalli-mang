@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Jalgpalli_mäng
 {
+    //Klass, mis kirjeldab ekraanil olevat punkti
+    //Класс, который описывает точку на экране
     public class Point
     {
         public int x { get; }
@@ -18,6 +20,8 @@ namespace Jalgpalli_mäng
             y = _y;
             symbol = _symbol;
         }
+        //Meetod ekraanile punktide kuvamiseks
+        //Метод для отображения точек на экране
         public void Draw()
         {
             Console.SetCursorPosition(x, y);

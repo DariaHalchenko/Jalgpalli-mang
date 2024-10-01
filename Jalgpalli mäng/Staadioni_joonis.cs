@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Jalgpalli_mäng
 {
+    //Klass staadioni (mänguväljaku) joonistamiseks
+    //Класс для отрисовки стадиона (игрового поля)
     public class Staadioni_joonis
     {
         private Game _game;
@@ -15,16 +17,17 @@ namespace Jalgpalli_mäng
             _game = game;
         }
 
-        // Метод для отрисовки всего игрового поля
+        //Meetod mänguvälja joonistamiseks(Метод для рисование игрового поля)
         public void Draw()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-
+            //Loome horisontaalsed jooned (Создаем горизонтальные линии )
             HorizontalLine upLine = new HorizontalLine(0, _game.Stadium.Width - 1, 0, '-');
             HorizontalLine downLine = new HorizontalLine(0, _game.Stadium.Width - 1, _game.Stadium.Height - 1, '_');
+            //Loome vertikaalsed jooned (Создаем вертикальные линии)
             VerticalLine leftLine = new VerticalLine(0, _game.Stadium.Height - 1, 0, '|');
             VerticalLine rightLine = new VerticalLine(0, _game.Stadium.Height - 1, _game.Stadium.Width - 1, '|');
-
+            //Joonistame (Отрисовываем)
             upLine.Draw();
             downLine.Draw();
             leftLine.Draw();

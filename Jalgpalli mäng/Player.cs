@@ -66,8 +66,8 @@ namespace Jalgpalli_mäng
             _vx = dx / ratio;
             _vy = dy / ratio;
         }
-
-        public void Clear() // очистить игрока
+        //Puhastab mängija positsiooni ekraanilt (Очищает позицию игрока с экрана)
+        public void Clear() 
         {
             Console.SetCursorPosition((int)X, (int)Y);
             Console.Write(' ');

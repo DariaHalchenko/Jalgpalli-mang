@@ -40,13 +40,14 @@ namespace Jalgpalli_mäng
         //добавления игрока в команду, если игрок уже принадлежит команде, то нельзя добавлять
         public void AddPlayer(Player player)
         {
+            //Kontrollib, kas mängijal on meeskond (Проверяет, есть ли у игрока команда)
             if (player.Team != null) return;
+            //Lisab mängija meeskonda (Добавиляет игрока в команду)
             Players.Add(player);
             player.Team = this;
         }
 
         //palli asendi määramine meeskonnale (определения положения мяча для команды)
-
         public (double, double) GetBallPosition()
         {
             return Game.GetBallPosition();
@@ -65,28 +66,19 @@ namespace Jalgpalli_mäng
         public Player GetClosestPlayerToBall()
         {
             Player closestPlayer = Players[0];
-            double bestDistance = Double.MaxValue;
-            foreach (var player in Players)
+            double bestDistance = Double.MaxValue; // Algne parim kaugus (Изначально наибольшее расстояние)
+            foreach (var player in Players) //esimene mängija lähim (первый игрок ближайший)
             {
                 //Mängija pallikauguse arvutamine (Расчет расстояния игрока до мяча)
                 var distance = player.GetDistanceToBall();
                 if (distance < bestDistance)
                 {
-                    closestPlayer = player;
-                    bestDistance = distance;
+                    closestPlayer = player; // Uuendame lähimat mängijat (Обновляем ближайшего игрока)
+                    bestDistance = distance; //Uuendame kaugust (Обновляем расстояние)
                 }
             }
 
-            return closestPlayer;
+            return closestPlayer; //Tagastab lähima mängija (Возвращает ближайшего игрока)
         }
-
-
-        //Mängu ajal mängijate liigutamise meetod (Метод перемещения игроков во время игры)
-        //public void Move()
-        //{
-        //    //Lähima mängija liigutamine palli juurde (Перемещение ближайшего игрока к мячу)
-        //    GetClosestPlayerToBall().MoveTowardsBall();
-        //    Players.ForEach(player => player.Move());
-        //}
     }
 }

@@ -61,23 +61,25 @@ namespace Jalgpalli_mäng
         //uuendab mängijate ja palli asukohti väljakul (обновляет позиции игроков и мяча на поле)
         public void Move()
         {
+            //Saame pallile lähimad mängijad mõlemale meeskonnale
+            //Получаем ближайших к мячу игроков для обеих команд
             var closestHomePlayer = HomeTeam.GetClosestPlayerToBall();
             var closestAwayPlayer = AwayTeam.GetClosestPlayerToBall();
-
+            //Valime mängija, kes on pallile lähemal
             // Выбираем игрока, который ближе к мячу
             Player closestPlayer;
             if (closestHomePlayer.GetDistanceToBall() < closestAwayPlayer.GetDistanceToBall())
             {
-                closestPlayer = closestHomePlayer;
+                closestPlayer = closestHomePlayer; //Lähemal on kodumeeskonna mängija (Ближе игрок домашней команды)
             }
             else
             {
-                closestPlayer = closestAwayPlayer;
+                closestPlayer = closestAwayPlayer; //Lähemal on külalismeeskonna mängija (Ближе игрок гостевой команды)
             }
 
-            closestPlayer.Move();
+            closestPlayer.Move(); //Valitud mängija liikumine palli poole (Движение выбранного игрока к мячу)
 
-            Ball.Move();
+            Ball.Move(); //Palli liikumine (Движение мяча)
         }
     }
 }
